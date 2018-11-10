@@ -119,7 +119,7 @@ $('#logoutBtn').on('click', function() {
   $('#loginname').val('');
 })
 
-
+// enable to add a new room when selected
 $('#roomSelect').on('change', function() {
   var roomname = $('#roomSelect').find(":selected").val();
   if(roomname === 'add a new room') {
@@ -127,6 +127,7 @@ $('#roomSelect').on('change', function() {
   }
 })
 
+// add a new room
 $('#addBtn').on('click', function() {
   var roomname = $('#roomname').val();
   app.renderRoom(roomname);
