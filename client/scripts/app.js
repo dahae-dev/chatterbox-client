@@ -133,4 +133,6 @@ $('#addBtn').on('click', function () {
   app.renderRoom(roomname)
   $('#roomname').val('')
   $('#add').addClass('hide')
+  var options = $('#roomSelect').children()
+  options[options.length - 1].setAttribute('selected', 'selected')
 })
