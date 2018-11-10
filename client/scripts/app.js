@@ -19,9 +19,15 @@ var app = {
   },
 
   fetch: function () {
+    var oldData = $('#chats').children().length
     $.ajax({
       url: this.server,
-      success: data => this.renderMessage(data[data.length - 1])
+      success: data => {
+        var recentData = data[data.length - 1]
+        if(oldData !== data.length) {
+          this.renderMessage(recentData)
+        }
+      }
     })
   },
 
@@ -85,7 +91,12 @@ var app = {
       roomname: $('#roomSelect').find(':selected').val()
     }
 
+    if(message.text === '') {
+      alert('Please fill text in!');
+    }
+
     app.send(message)
+    $('#text').val('')
   },
 
   escapeHTML: function (str) {
@@ -102,6 +113,11 @@ var app = {
 
 app.init()
 
+// *** automatic refresh : needs to be fixed to refresh new messages by each room ***
+setInterval(function () {
+  app.fetch()
+}, 1000)
+
 // show welcome message
 $('#loginBtn').on('click', function () {
   var username = $('#loginname').val()
@@ -116,16 +132,34 @@ $('#loginBtn').on('click', function () {
 
 // change username
 $('#logoutBtn').on('click', function () {
-  $('#state').addClass('hide')
-  $('#login').removeClass('hide')
-  $('#loginname').val('')
+  location.reload()
 })
 
-// enable to add a new room in select options
+// select a room
 $('#roomSelect').on('change', function () {
-  var roomname = $('#roomSelect').find(':selected').val()
-  if (roomname === 'add a new room') {
+  var selectedRoom = $('#roomSelect').find(':selected').val()
+  if (selectedRoom === 'add a new room') {
     $('#add').removeClass('hide')
+  } else if(selectedRoom === 'select a room') {
+    return;
+  } else {
+    $.ajax({
+      url: app.server,
+      success: data => {
+        $('#chats').html('')
+        data.forEach(({ username, text, roomname, date }) => {
+          if(roomname === selectedRoom) {
+            var username = app.escapeHTML(username)
+            var text = app.escapeHTML(text)
+            var roomname = app.escapeHTML(roomname)
+            const $p = $(
+              `<p><a>${username}</a>: ${text} (${roomname} @${date})</p>`
+            )
+            $('#chats').prepend($p)
+          }
+        })
+      }
+    })
   }
 })
 
@@ -137,4 +171,14 @@ $('#addBtn').on('click', function () {
   $('#add').addClass('hide')
   var options = $('#roomSelect').children()
   options[options.length - 1].setAttribute('selected', 'selected')
+})
+
+// see all the Messages
+$('#allBtn').on('click', function () {
+  app.renderAllMessage();
+})
+
+// clear all the Messages
+$('#clearBtn').on('click', function () {
+  app.clearMessages();
 })
