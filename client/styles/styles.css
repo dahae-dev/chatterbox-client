@@ -7,6 +7,9 @@ body {
 
 a, button {
     cursor: pointer;
+    position: relative;
+    left: 5px;
+    border-radius: 4px;
 }
 
 button:hover, button:active {
@@ -40,12 +43,6 @@ button:hover, button:active {
 
 #login, #state {
     margin-top: 10px;
-}
-
-#loginBtn {
-    position: relative;
-    left: 10px;
-    border-radius: 4px;
 }
 
 #room, #msg {

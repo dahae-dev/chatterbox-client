@@ -15,12 +15,12 @@
       <div id="top">
         <span>chatterbox</span>
         <div id="login">
-          <input type="text" id="username" placeholder="username" />
+          <input type="text" id="loginname" placeholder="loginname" />
           <button id="loginBtn">Login</button>
         </div>
         <!-- welcome msg -->
         <div id="state" class="hide">
-          <span id="welcome">Welcome, <span id="loginname"></span> !</span>
+          <span id="welcome">Welcome, <span id="username"></span> !</span>
           <button id="logoutBtn">Logout</button>
         </div>
       </div>
@@ -33,7 +33,7 @@
         </select>
         <span id="add" class="hide">
           <input type="text" id="roomname" placeholder="roomname" />
-          <button id="add">Add</button>
+          <button id="addBtn">Add</button>
         </span>
       </div>
       <!-- msg submit-->
@@ -45,14 +45,6 @@
     </div>
     <!-- chat -->
     <div id="chats"></div>
-
-    <!-- login modal -->
-    <div id="login" class="modal">
-      <form class="modal-content animate">
-        <input type="text" id="loginname" placeholder="loginname" />
-        <button id="startBtn">Start to chat!</button>
-      </form>
-    </div>
 
     <!-- your scripts -->
     <script src="scripts/app.js"></script>

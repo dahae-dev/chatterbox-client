@@ -102,18 +102,34 @@ app.init();
 
 // show welcome message
 $('#loginBtn').on('click', function() {
-  var username = $('#username').val();
+  var username = $('#loginname').val();
   if(username === '') {
     alert('Please fill username in!');
   } else {
-    $('#loginname').text(username);
+    $('#username').text(username);
     $('#state').removeClass('hide');
     $('#login').addClass('hide');
   }
 })
+
 // change username
 $('#logoutBtn').on('click', function() {
   $('#state').addClass('hide');
   $('#login').removeClass('hide');
-  $('#username').val('');
+  $('#loginname').val('');
+})
+
+
+$('#roomSelect').on('change', function() {
+  var roomname = $('#roomSelect').find(":selected").val();
+  if(roomname === 'add a new room') {
+    $('#add').removeClass('hide');
+  }
+})
+
+$('#addBtn').on('click', function() {
+  var roomname = $('#roomname').val();
+  app.renderRoom(roomname);
+  $('#roomname').val('');
+  $('#add').addClass('hide');
 })
