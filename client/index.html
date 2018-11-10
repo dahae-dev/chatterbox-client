@@ -2,19 +2,68 @@
 <html>
   <head>
     <meta charset="utf-8">
+    
     <title>chatterbox</title>
+
     <link rel="stylesheet" href="styles/styles.css">
 
     <!-- dependencies -->
-    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../lib/jquery.js"></script>
   </head>
   <body>
+    
     <div id="main">
       <h1>chatterbox</h1>
       <!-- Your HTML goes here! -->
+      <button id="fetch-btn">Fetch</button>
+      <input id="username"  placeholder="username"/>
+      <input id="text" placeholder="text"/>
+      <input id="roomname" placeholder="roomname"/>
+      <select id="roomSelect" placeholder="roomname"></select>
+      <button id="send">send</button>
+      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
     </div>
+    
+
+    <!--  -->
+  <div id="id01" class="modal">
+  
+  <form class="modal-content animate" >
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required/>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required/>
+        
+      <button type="submit">Login</button>
+    
+    </div>
+
+  </form>
+</div>
+    <!--  -->
+
+
     <div id="chats"></div>
     <!-- your scripts -->
+    
+    <script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    </script>
     <script src="scripts/app.js"></script>
   </body>
 </html>
