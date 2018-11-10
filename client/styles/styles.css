@@ -15,7 +15,7 @@ button:hover, button:active {
     border-radius: 4px;
 }
 
-#welcome, #add {
+.hide {
     display: none;
 }
 
@@ -29,40 +29,17 @@ button:hover, button:active {
     border-width: 0 1px 1px 1px;
 }
 
-/* #main span {
-    margin-top: 0;
-    font-size: 35px;
-    margin-bottom: 5px;
-    padding: 5px;
-}
-
-#main ul {
-    padding-left: 20px;
-}
-
-#main .error {
-    border: 1px solid red;
-    background: #FDEFF0;
-    padding: 20px;
-}
-
-#main .success {
-    margin-top: 25px;
-}
-
-#main .success code {
-    font-size: 12px;
-    color: green;
-    line-height: 13px;
-} */
-
 #top {
     margin-bottom: 20px;
 }
 
-#top span {
+#top > span {
     font-size: 35px;
     font-weight: bold;
+}
+
+#login, #state {
+    margin-top: 10px;
 }
 
 #loginBtn {
@@ -79,20 +56,7 @@ button:hover, button:active {
 #text {
     width: 70%;
 }
-/*
-form {
-    padding: 10px;
-    padding-left: 0;
-    margin-bottom: 10px;
-}
 
-form input[type=text] {
-    margin-right: 10px;
-    width: 70%;
-    font-size: 12px;
-    padding: 5px;
-}
-*/
 .chat {
     padding: 5px;
     margin-bottom: 5px;
@@ -120,45 +84,4 @@ form input[type=text] {
 .friend {
     color: #fff;
     background-color: #0090da;
-}
-
-.loginBtn {
-    display: flex;
-}
-
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-}
-
-.animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
-}
-    
-@keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
 }

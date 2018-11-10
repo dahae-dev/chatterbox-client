@@ -79,7 +79,7 @@ var app = {
 
   handleSubmit: function () {
     var message = {
-      username: $('#username').val(),
+      username: $('#username').text(),
       text: $('#text').val(),
       roomname: $('#roomSelect').find(":selected").val(),
     };
@@ -99,3 +99,21 @@ var app = {
 }
 
 app.init();
+
+// show welcome message
+$('#loginBtn').on('click', function() {
+  var username = $('#username').val();
+  if(username === '') {
+    alert('Please fill username in!');
+  } else {
+    $('#loginname').text(username);
+    $('#state').removeClass('hide');
+    $('#login').addClass('hide');
+  }
+})
+// change username
+$('#logoutBtn').on('click', function() {
+  $('#state').addClass('hide');
+  $('#login').removeClass('hide');
+  $('#username').val('');
+})

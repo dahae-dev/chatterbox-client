@@ -14,18 +14,25 @@
       <!-- top -->
       <div id="top">
         <span>chatterbox</span>
-        <button id="loginBtn" onclick="openModal()">Login</button>
+        <div id="login">
+          <input type="text" id="username" placeholder="username" />
+          <button id="loginBtn">Login</button>
+        </div>
         <!-- welcome msg -->
-        <!-- <p id="welcome">Welcome, <span id="username"></span> !</p> -->
+        <div id="state" class="hide">
+          <span id="welcome">Welcome, <span id="loginname"></span> !</span>
+          <button id="logoutBtn">Logout</button>
+        </div>
       </div>
       <!-- room -->
       <div id="room">
         <label for="roomSelect">room: </label>
         <select id="roomSelect">
+          <option>select a room</option>
           <option>add a new room</option>
         </select>
-        <span id="add">
-          <!-- <input type="text" id="roomname" placeholder="roomname" /> -->
+        <span id="add" class="hide">
+          <input type="text" id="roomname" placeholder="roomname" />
           <button id="add">Add</button>
         </span>
       </div>
@@ -43,22 +50,11 @@
     <div id="login" class="modal">
       <form class="modal-content animate">
         <input type="text" id="loginname" placeholder="loginname" />
-        <button>Start to chat!</button>
+        <button id="startBtn">Start to chat!</button>
       </form>
     </div>
 
     <!-- your scripts -->
     <script src="scripts/app.js"></script>
-    <script>
-      var modal = document.querySelector('.modal');
-      var openModal = function() {
-        modal.style.display = 'block';
-      };
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
-    </script>
   </body>
 </html>
