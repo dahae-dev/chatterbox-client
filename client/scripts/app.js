@@ -80,7 +80,7 @@ var app = {
 
   handleSubmit: function () {
     var message = {
-      username: $('#username').val(),
+      username: $('#username').text(),
       text: $('#text').val(),
       roomname: $('#roomSelect').find(':selected').val()
     }
@@ -102,46 +102,35 @@ var app = {
 
 app.init()
 
-// setInterval(app.fetch, 2000);
-// setInterval(function(){
-//   location.reload();
-// }, 5000);
-
-/* 입력한 데이터 렌더링한 다음에 입력값 삭제
-$('#username').val('');
-$('#text').val('');
-$('#roomname').val('');
-*/
-/*
-$(document).ready(() => {
-  const url = 'http://52.78.213.9:3000/messages';
-
-  const fetchMessages = () => $.ajax({
-    url,
-    success: (data) => {
-      $('#chats').html('');
-      data.forEach(({username, text, roomname, date}) => {
-        const $p = $(`<p>${username}: ${text} (${roomname} @${date})</p>`);
-        $('#chats').append($p);
-      })
-    }
-  });
-
-  const postMessage = () => $.ajax({
-    type: 'POST',
-    url,
-    contentType: 'application/json',
-    data: JSON.stringify({
-      username: $('#username').val(),
-      text: $('#text').val(),
-      roomname: $('#roomname').val()
-    }),
-    success: () => fetchMessages()
-  });
-
-  //fetchMessages();
-
-  $(document).on('click', '#fetch-btn', fetchMessages);
-  $(document).on('click', '#post-message', postMessage);
+// show welcome message
+$('#loginBtn').on('click', function () {
+  var username = $('#loginname').val()
+  if (username === '') {
+    alert('Please fill username in!')
+  } else {
+    $('#username').text(username)
+    $('#state').removeClass('hide')
+    $('#login').addClass('hide')
+  }
 })
-*/
+
+// change username
+$('#logoutBtn').on('click', function () {
+  $('#state').addClass('hide')
+  $('#login').removeClass('hide')
+  $('#loginname').val('')
+})
+
+$('#roomSelect').on('change', function () {
+  var roomname = $('#roomSelect').find(':selected').val()
+  if (roomname === 'add a new room') {
+    $('#add').removeClass('hide')
+  }
+})
+
+$('#addBtn').on('click', function () {
+  var roomname = $('#roomname').val()
+  app.renderRoom(roomname)
+  $('#roomname').val('')
+  $('#add').addClass('hide')
+})

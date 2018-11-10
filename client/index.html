@@ -6,51 +6,48 @@
     <title>chatterbox</title>
 
     <link rel="stylesheet" href="styles/styles.css">
-
     <!-- dependencies -->
+    <!--<script src="../node_modules/jquery/dist/jquery.js"></script>-->
     <script src="../lib/jquery.js"></script>
   </head>
   <body>
-    
+
     <div id="main">
-      <h1>chatterbox</h1>
-      <!-- Your HTML goes here! -->
-      <button id="fetch-btn">Fetch</button>
-      <input id="username"  placeholder="username"/>
-      <input id="text" placeholder="text"/>
-      <input id="roomname" placeholder="roomname"/>
-      <select id="roomSelect" placeholder="roomname"></select>
-      <button id="send">send</button>
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+      <!-- top -->
+      <div id="top">
+        <span>chatterbox</span>
+        <div id="login">
+          <input type="text" id="loginname" placeholder="loginname" />
+          <button id="loginBtn">Login</button>
+        </div>
+        <!-- welcome msg -->
+        <div id="state" class="hide">
+          <span id="welcome">Welcome, <span id="username"></span> !</span>
+          <button id="logoutBtn">Logout</button>
+        </div>
+      </div>
+      <!-- room -->
+      <div id="room">
+        <label for="roomSelect">room: </label>
+        <select id="roomSelect">
+          <option>select a room</option>
+          <option>add a new room</option>
+        </select>
+        <span id="add" class="hide">
+          <input type="text" id="roomname" placeholder="roomname" />
+          <button id="addBtn">Add</button>
+        </span>
+      </div>
+      <!-- msg submit-->
+      <div id="msg">
+        <label for="text">text: </label>
+        <input type="text" id="text" placeholder="text" />
+        <button id="send">Submit</button>
+      </div>
     </div>
-    
-
-    <!--  -->
-  <div id="id01" class="modal">
-  
-  <form class="modal-content animate" >
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
-    </div>
-
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required/>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required/>
-        
-      <button type="submit">Login</button>
-    
-    </div>
-
-  </form>
-</div>
-    <!--  -->
-
-
+    <!-- chat -->
     <div id="chats"></div>
+
     <!-- your scripts -->
     
     <script>
