@@ -4,17 +4,61 @@
     <meta charset="utf-8">
     <title>chatterbox</title>
     <link rel="stylesheet" href="styles/styles.css">
-
     <!-- dependencies -->
-    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <!--<script src="../node_modules/jquery/dist/jquery.js"></script>-->
+    <script src="../lib/jquery.js"></script>
   </head>
   <body>
+
     <div id="main">
-      <h1>chatterbox</h1>
-      <!-- Your HTML goes here! -->
+      <!-- top -->
+      <div id="top">
+        <span>chatterbox</span>
+        <button id="loginBtn" onclick="openModal()">Login</button>
+        <!-- welcome msg -->
+        <!-- <p id="welcome">Welcome, <span id="username"></span> !</p> -->
+      </div>
+      <!-- room -->
+      <div id="room">
+        <label for="roomSelect">room: </label>
+        <select id="roomSelect">
+          <option>add a new room</option>
+        </select>
+        <span id="add">
+          <!-- <input type="text" id="roomname" placeholder="roomname" /> -->
+          <button id="add">Add</button>
+        </span>
+      </div>
+      <!-- msg submit-->
+      <div id="msg">
+        <label for="text">text: </label>
+        <input type="text" id="text" placeholder="text" />
+        <button id="send">Submit</button>
+      </div>
     </div>
+    <!-- chat -->
     <div id="chats"></div>
+
+    <!-- login modal -->
+    <div id="login" class="modal">
+      <form class="modal-content animate">
+        <input type="text" id="loginname" placeholder="loginname" />
+        <button>Start to chat!</button>
+      </form>
+    </div>
+
     <!-- your scripts -->
     <script src="scripts/app.js"></script>
+    <script>
+      var modal = document.querySelector('.modal');
+      var openModal = function() {
+        modal.style.display = 'block';
+      };
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    </script>
   </body>
 </html>
