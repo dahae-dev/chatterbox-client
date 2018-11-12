@@ -114,7 +114,7 @@ var app = {
 app.init()
 
 // *** automatic refresh : needs to be fixed to refresh new messages by each room ***
-setInterval(function () {
+var intervalIndex = setInterval(function () {
   app.fetch()
 }, 1000)
 
@@ -137,6 +137,9 @@ $('#logoutBtn').on('click', function () {
 
 // select a room
 $('#roomSelect').on('change', function () {
+  clearInterval(intervalIndex);
+  // add auto refresh by each room
+
   var selectedRoom = $('#roomSelect').find(':selected').val()
   if (selectedRoom === 'add a new room') {
     $('#add').removeClass('hide')
